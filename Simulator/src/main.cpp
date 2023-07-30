@@ -1,9 +1,11 @@
 
-namespace Aqua {
-	__declspec(dllimport) void print(const char* message);
-}
+#include "Simulator.h"
 
 int main() {
-	Aqua::print("Project setup works.");
+	
+	Application* app = new Application();
+	app->run();
+	delete app;
+
 	return 0;
 }
