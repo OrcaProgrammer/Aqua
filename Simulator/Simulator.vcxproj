@@ -99,7 +99,7 @@
     <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\res\icon\placeholder-icon.ico" />
+    <Image Include="..\..\..\..\Drawing Files\Logos\Aqua Logos\Aqua-Placeholder1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
