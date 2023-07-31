@@ -1,6 +1,10 @@
 #include "Application.h"
 
 void Application::run() {
-	Aqua::Test test;
-	test.print("The project still works.");
+
+	Logger::Log("Log message");
+	Logger::Trace("Trace message");
+	Logger::Info("Info message");
+	Logger::Warn("Warning message");
+	Logger::Error("Error message");
 }

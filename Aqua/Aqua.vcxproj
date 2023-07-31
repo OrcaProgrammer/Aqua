@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Aqua\Core\Logger.h" />
     <ClInclude Include="src\Aqua.h" />
-    <ClInclude Include="src\Aqua\Core.h" />
-    <ClInclude Include="src\Aqua\Test.h" />
+    <ClInclude Include="src\Aqua\Core\Core.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Aqua\Test.cpp" />
+    <ClCompile Include="src\Aqua\Core\Logger.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -66,6 +66,7 @@
       <PreprocessorDefinitions>AQ_PLATFORM_WINDOWS;AQ_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Aqua\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,6 +85,7 @@
       <PreprocessorDefinitions>AQ_PLATFORM_WINDOWS;AQ_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Aqua\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
