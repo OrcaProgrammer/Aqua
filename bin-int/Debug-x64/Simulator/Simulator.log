@@ -1,3 +1,4 @@
 ﻿  Application.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include\format(43): warning STL4038: The contents of <format> are available only with C++20 or later.
+  main.cpp
+  Generating Code...
   Simulator.vcxproj -> C:\Users\lpolo\Documents\dev\Serious_Projects\Aqua\bin\Debug-x64\Simulator\Simulator.exe
