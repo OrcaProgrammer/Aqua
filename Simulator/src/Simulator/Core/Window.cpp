@@ -1,3 +1,4 @@
+#include <Sim_pch.h>
 #include "Window.h"
 
 Window::Window(int width, int height, std::string title) :
@@ -31,9 +32,26 @@ Window::~Window() {
 	delete m_Window;
 }
 
+void Window::SetEventCallbacks(EventManager manager) {
+	
+	m_EvtManager = manager;
+	glfwSetWindowUserPointer(m_Window, this);
+
+	glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mode) {
+		Window& self = *static_cast<Window*>(glfwGetWindowUserPointer(window));
+		KeyCode keyUsed = static_cast<KeyCode>(key);
+		KeyAction actionDone = static_cast<KeyAction>(action);
+		self.m_EvtManager.pollKeyEvents(keyUsed, actionDone);
+	});
+}
+
 void Window::Update() {
 	glfwSwapBuffers(m_Window);
 	glfwPollEvents();
+}
+
+void Window::CloseWindow() {
+	glfwSetWindowShouldClose(m_Window, true);
 }
 
 bool Window::IsWindowActive() {

@@ -1,10 +1,8 @@
 #pragma once
 
-#include <string>
-#include <GlAD/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Aqua/Core/Logger.h"
+#include "Simulator/Events/EventManager.h"
+#include "Simulator/Events/KeyEvent.h"
 
 class Window
 {
@@ -16,10 +14,14 @@ private:
 
 public:
 	
+	EventManager m_EvtManager;
+
 	Window(int width, int height, std::string title);
 	~Window();
 
+	void SetEventCallbacks(EventManager manager);
 	void Update();
+	void CloseWindow();
 	bool IsWindowActive();
 
 };

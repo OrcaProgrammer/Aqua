@@ -1,7 +1,9 @@
 #pragma once
 
 #include <Aqua.h>
-#include <Simulator.h>
+#include "Simulator/Core/Window.h"
+#include "Simulator/Events/EventManager.h"
+#include "Simulator/Events/KeyEvent.h"
 
 class Application
 {
