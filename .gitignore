@@ -1,6 +1,9 @@
 # Directories
 .vs
+Simulator/includes
+Simulator/libs
 
 # Files
 **.user
 **.txt
+Simulator/src/glad.c

@@ -57,12 +57,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>AQ_PLATFORM_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Aqua\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Simulator\src;$(SolutionDir)Simulator\includes;$(SolutionDir)Aqua\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Simulator\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -73,7 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>AQ_PLATFORM_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Aqua\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Simulator\src;$(SolutionDir)Simulator\includes;$(SolutionDir)Aqua\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -81,6 +83,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Simulator\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -89,22 +93,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Simulator\Application.cpp" />
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\Simulator\Core\Layer.cpp" />
+    <ClCompile Include="src\Simulator\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Simulator\Core\Application.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Simulator\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="includes\glad\glad.h" />
+    <ClInclude Include="includes\GLFW\glfw3.h" />
+    <ClInclude Include="includes\KHR\khrplatform.h" />
+    <ClInclude Include="src\Simulator\Core\Layer.h" />
+    <ClInclude Include="src\Simulator\Core\LayerStack.h" />
+    <ClInclude Include="res\resource.h" />
     <ClInclude Include="src\Simulator.h" />
-    <ClInclude Include="src\Simulator\Application.h" />
+    <ClInclude Include="src\Simulator\Core\Application.h" />
+    <ClInclude Include="src\Simulator\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <ResourceCompile Include="res\Resource.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Drawing Files\Logos\Aqua Logos\Aqua-Placeholder1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resource.aps" />
+    <None Include="res\Resource.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="libs\glfw3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
