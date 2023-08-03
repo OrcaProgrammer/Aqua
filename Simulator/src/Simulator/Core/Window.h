@@ -14,12 +14,10 @@ private:
 
 public:
 	
-	EventManager m_EvtManager;
-
 	Window(int width, int height, std::string title);
 	~Window();
 
-	void SetEventCallbacks(EventManager manager);
+	void SetEventCallbacks();
 	void Update();
 	void CloseWindow();
 	bool IsWindowActive();

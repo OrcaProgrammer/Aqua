@@ -32,16 +32,15 @@ Window::~Window() {
 	delete m_Window;
 }
 
-void Window::SetEventCallbacks(EventManager manager) {
+void Window::SetEventCallbacks() {
 	
-	m_EvtManager = manager;
 	glfwSetWindowUserPointer(m_Window, this);
 
 	glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mode) {
 		Window& self = *static_cast<Window*>(glfwGetWindowUserPointer(window));
 		KeyCode keyUsed = static_cast<KeyCode>(key);
 		KeyAction actionDone = static_cast<KeyAction>(action);
-		self.m_EvtManager.pollKeyEvents(keyUsed, actionDone);
+		EventManager::get()->pollKeyEvents(keyUsed, actionDone);
 	});
 }
 

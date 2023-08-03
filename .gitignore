@@ -2,6 +2,7 @@
 .vs
 Simulator/includes
 Simulator/libs
+bin-int/
 
 # Files
 **.user

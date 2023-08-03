@@ -6,11 +6,17 @@
 class EventManager
 {
 private:
+
+	static EventManager* m_Instance;
 	std::deque<KeyEvent*> m_KeyEvents;
+
+protected:
+
+	EventManager();
+
 public:
 
-	~EventManager();
-
+	static EventManager* get();
 	void addKeyEvent(KeyEvent* e);
 	void pollKeyEvents(KeyCode key, KeyAction action);
 	int sizeOfKeyEvents();

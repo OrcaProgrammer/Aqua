@@ -5,7 +5,7 @@ void Application::run() {
 
 	Window mainWindow(800, 600, "Test Window");
 
-	EventManager e_Manager;
+	EventManager* e_Manager = EventManager::get();
 
 	KeyEvent* e_CloseWindow = new KeyEvent();
 	e_CloseWindow->handle(KeyCode::ESCAPE, KeyAction::PRESSED);
@@ -26,10 +26,10 @@ void Application::run() {
 		Logger::Log("Key A pressed!");
 	});
 
-	e_Manager.addKeyEvent(e_CloseWindow);
-	e_Manager.addKeyEvent(e_SpaceBar);
-	e_Manager.addKeyEvent(e_KeyA);
-	mainWindow.SetEventCallbacks(e_Manager);
+	e_Manager->addKeyEvent(e_CloseWindow);
+	e_Manager->addKeyEvent(e_SpaceBar);
+	e_Manager->addKeyEvent(e_KeyA);
+	mainWindow.SetEventCallbacks();
 
 	while (m_Running) {
 
