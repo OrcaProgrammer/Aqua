@@ -7,61 +7,95 @@
 #include <chrono>
 #include <format>
 
-#include <Aqua.h>
+#include "Core.h"
 
 class AQUA_API Logger
 {
 public:
 
 	template <typename... Args>
-	static void Log(Args&&... args) {
+	static void Log(const char* prefix, Args&&... args) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-		std::cout << "AQUA " << GetCurrentTime() << " LOG:  \t";
+
+		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+		std::cout << prefix << std::format("{:%X}", time) << " LOG:\t\t";
+
 		(std::cout << ... << args) << "\n";
 	};
 
 	template <typename... Args>
-	static void Trace(Args&&... args) {
+	static void Trace(const char* prefix, Args&&... args) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
-		std::cout << "AQUA " << GetCurrentTime() << " TRACE:  \t";
+
+		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+		std::cout << prefix << std::format("{:%X}", time) << " TRACE:\t\t";
+
 		(std::cout << ... << args) << "\n";
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 	};
 
 	template <typename... Args>
-	static void Info(Args&&... args) {
+	static void Info(const char* prefix, Args&&... args) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
-		std::cout << "AQUA " << GetCurrentTime() << " INFO:  \t";
+
+		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+		std::cout << prefix << std::format("{:%X}", time) << " INFO:\t\t";
+
 		(std::cout << ... << args) << "\n";
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 	};
 
 	template <typename... Args>
-	static void Warn(Args&&... args) {
+	static void Warn(const char* prefix, Args&&... args) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
-		std::cout << "AQUA " << GetCurrentTime() << " WARNING:\t";
+
+		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+		std::cout << prefix << std::format("{:%X}", time) << " WARNING:\t";
+
 		(std::cout << ... << args) << "\n";
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 	};
 
 	template <typename... Args>
-	static void Error(Args&&... args) {
+	static void Error(const char* prefix, Args&&... args) {
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-		std::cout << "AQUA " << GetCurrentTime() << " ERROR:  \t";
+
+		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+		std::cout << prefix << std::format("{:%X}", time) << " ERROR:\t\t";
+
 		(std::cout << ... << args) << "\n";
 		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-	};
-
-private:
-
-	static std::string GetCurrentTime() {
-		auto const time = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
-		return std::format("{:%X}", time);
 	};
 };
 
+
+#ifdef _DEBUG
+	#define AQ_LOG(...) Logger::Log("AQUA\t\t", __VA_ARGS__)
+	#define AQ_TRACE(...) Logger::Trace("AQUA\t\t", __VA_ARGS__)
+	#define AQ_INFO(...) Logger::Info("AQUA\t\t", __VA_ARGS__)
+	#define AQ_WARN(...) Logger::Warn("AQUA\t\t", __VA_ARGS__)
+	#define AQ_ERROR(...) Logger::Error("AQUA\t\t", __VA_ARGS__)
+
+	#define AQ_DEBUG_LOG(...) Logger::Log("AQUA (DEBUG)\t", __VA_ARGS__)
+	#define AQ_DEBUG_TRACE(...) Logger::Trace("AQUA (DEBUG)\t", __VA_ARGS__)
+	#define AQ_DEBUG_INFO(...) Logger::Info("AQUA (DEBUG)\t", __VA_ARGS__)
+	#define AQ_DEBUG_WARN(...) Logger::Warn("AQUA (DEBUG)\t", __VA_ARGS__)
+	#define AQ_DEBUG_ERROR(...) Logger::Error("AQUA (DEBUG)\t", __VA_ARGS__)
+#else
+	#define AQ_LOG(...) Logger::Log("AQUA\t", __VA_ARGS__)
+	#define AQ_TRACE(...) Logger::Trace("AQUA\t", __VA_ARGS__)
+	#define AQ_INFO(...) Logger::Info("AQUA\t", __VA_ARGS__)
+	#define AQ_WARN(...) Logger::Warn("AQUA\t", __VA_ARGS__)
+	#define AQ_ERROR(...) Logger::Error("AQUA\t", __VA_ARGS__)
+
+	#define AQ_DEBUG_LOG(...)
+	#define AQ_DEBUG_TRACE(...)
+	#define AQ_DEBUG_INFO(...)
+	#define AQ_DEBUG_WARN(...)
+	#define AQ_DEBUG_ERROR(...)
+#endif

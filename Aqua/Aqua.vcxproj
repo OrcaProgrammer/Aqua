@@ -15,6 +15,9 @@
     <ClInclude Include="src\Aqua.h" />
     <ClInclude Include="src\Aqua\Core\Core.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Aqua\Core\Test.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

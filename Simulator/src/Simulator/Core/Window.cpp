@@ -12,18 +12,18 @@ Window::Window(int width, int height, std::string title) :
 	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), NULL, NULL);
 
 	if (!m_Window) {
-		Logger::Error("GLFW window failed to create!");
+		AQ_DEBUG_ERROR("GLFW window failed to create!");
 		glfwTerminate();
 	}
 	else
-		Logger::Trace("GLFW window created successfully.");
+		AQ_DEBUG_TRACE("GLFW window created successfully.");
 
 	glfwMakeContextCurrent(m_Window);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		Logger::Error("Failed to initialise GLAD!");
+		AQ_DEBUG_ERROR("Failed to initialise GLAD!");
 	else
-		Logger::Trace("GLAD initialised successfully.");
+		AQ_DEBUG_TRACE("GLAD initialised successfully.");
 
 	glViewport(0, 0, m_Width, m_Height);
 }
