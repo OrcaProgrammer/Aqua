@@ -6,3 +6,5 @@
 
 #include <GlAD/glad.h>
 #include <GLFW/glfw3.h>
+
+#include "Simulator/Core/Logger.h"

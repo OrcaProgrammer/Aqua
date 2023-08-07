@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Aqua/Core/Logger.h"
 #include "Simulator/Events/EventManager.h"
 #include "Simulator/Events/KeyEvent.h"
+
+#include <string>
 
 class Window
 {
@@ -18,9 +19,12 @@ public:
 	~Window();
 
 	void SetEventCallbacks();
-	void Update();
+	void PollEvents();
+	void SwapBuffers();
 	void CloseWindow();
 	bool IsWindowActive();
+
+	GLFWwindow* GetWindow();
 
 };
 

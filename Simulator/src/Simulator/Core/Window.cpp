@@ -44,9 +44,12 @@ void Window::SetEventCallbacks() {
 	});
 }
 
-void Window::Update() {
-	glfwSwapBuffers(m_Window);
+void Window::PollEvents() {
 	glfwPollEvents();
+}
+
+void Window::SwapBuffers() {
+	glfwSwapBuffers(m_Window);
 }
 
 void Window::CloseWindow() {
@@ -55,4 +58,8 @@ void Window::CloseWindow() {
 
 bool Window::IsWindowActive() {
 	return !glfwWindowShouldClose(m_Window);
+}
+
+GLFWwindow* Window::GetWindow() {
+	return m_Window;
 }

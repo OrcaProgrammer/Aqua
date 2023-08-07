@@ -1,7 +1,7 @@
 
 #include "Simulator.h"
 
-int main() {
+int WinMain() {
 	
 	Application* app = new Application();
 	app->run();
