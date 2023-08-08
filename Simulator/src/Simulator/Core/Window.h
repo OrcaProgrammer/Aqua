@@ -19,6 +19,7 @@ public:
 	~Window();
 
 	void SetEventCallbacks();
+	void ClearWindow();
 	void PollEvents();
 	void SwapBuffers();
 	void CloseWindow();

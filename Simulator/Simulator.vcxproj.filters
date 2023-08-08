@@ -69,6 +69,15 @@
     <ClCompile Include="src\Simulator\UI\ConsoleUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Simulator\Renderer\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Simulator\Renderer\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Simulator\UI\SceneUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Simulator\Core\Application.h">
@@ -131,6 +140,15 @@
     <ClInclude Include="src\Simulator\Core\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Simulator\Renderer\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Simulator\Renderer\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Simulator\UI\SceneUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\Resource.rc">
@@ -144,6 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Resource.aps" />
+    <None Include="src\Simulator\Shaders\simpleShader.frag" />
+    <None Include="src\Simulator\Shaders\simpleShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\glfw3.lib" />

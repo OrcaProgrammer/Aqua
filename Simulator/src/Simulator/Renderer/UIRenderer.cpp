@@ -22,7 +22,7 @@ void UIRenderer::Init() {
 	ImGui_ImplGlfw_InitForOpenGL(m_Window->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init();
 
-	io.Fonts->AddFontFromFileTTF(".\\res\\fonts\\TitilliumWeb-1eq2.ttf", 24.0f);
+	io.Fonts->AddFontFromFileTTF(".\\res\\fonts\\TitilliumWeb-1eq2.ttf", 22.0f);
 
 	ImGui::StyleColorsDark();
 }

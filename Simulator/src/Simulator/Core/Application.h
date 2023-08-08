@@ -4,9 +4,13 @@
 #include "Simulator/Core/Window.h"
 #include "Simulator/Events/EventManager.h"
 #include "Simulator/Events/KeyEvent.h"
+
+#include "Simulator/Renderer/Renderer.h"
 #include "Simulator/Renderer/UIRenderer.h"
+#include "Simulator/Renderer/Shader.h"
 
 #include "Simulator/UI/ConsoleUI.h"
+#include "Simulator/UI/SceneUI.h"
 
 class Application
 {

@@ -20,6 +20,5 @@ public:
 	void EndFrame();
 
 	void AddUIElement(ImGuiUI* element);
-	void RemoveUIElement(const char* name);
 };
 

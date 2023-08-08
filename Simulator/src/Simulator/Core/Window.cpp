@@ -18,18 +18,21 @@ Window::Window(int width, int height, std::string title) :
 	else
 		AQ_DEBUG_TRACE("GLFW window created successfully.");
 
+
 	glfwMakeContextCurrent(m_Window);
+
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		AQ_DEBUG_ERROR("Failed to initialise GLAD!");
 	else
 		AQ_DEBUG_TRACE("GLAD initialised successfully.");
 
-	glViewport(0, 0, m_Width, m_Height);
+
+	glViewport(-0.3f, -0.3f, m_Width, m_Height);
 }
 
 Window::~Window() {
-	delete m_Window;
+	glfwTerminate();
 }
 
 void Window::SetEventCallbacks() {
@@ -42,6 +45,11 @@ void Window::SetEventCallbacks() {
 		KeyAction actionDone = static_cast<KeyAction>(action);
 		EventManager::get()->pollKeyEvents(keyUsed, actionDone);
 	});
+}
+
+void Window::ClearWindow() {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void Window::PollEvents() {

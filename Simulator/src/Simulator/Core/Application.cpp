@@ -6,27 +6,32 @@ void Application::run() {
 
 	m_Window = new Window(1600, 800, "Aqua Simulator");
 
+	std::string shaderName = "simpleShader";
+	std::string vertShaderPath = ".\\src\\Simulator\\Shaders\\" + shaderName + ".vert";
+	std::string fragShaderPath = ".\\src\\Simulator\\Shaders\\" + shaderName + ".frag";
+	Shader* testShader = new Shader(vertShaderPath.c_str(), fragShaderPath.c_str());
+
+	Renderer renderer;
+	renderer.Init();
+	renderer.SetShader(testShader);
 
 	UIRenderer uiRenderer(m_Window);
 	uiRenderer.Init();
 	uiRenderer.AddUIElement(new ConsoleUI());
-
+	uiRenderer.AddUIElement(new SceneUI(renderer.GetTexID()));
 
 	setEventCallbacks();
 
-	
 	while (m_Running) {
 
-		m_Window->PollEvents();
-
 		uiRenderer.BeginFrame();
+		renderer.Render();
 		uiRenderer.DrawElements();
+		m_Window->ClearWindow();
 		uiRenderer.EndFrame();
 
+		m_Window->PollEvents();
 		m_Window->SwapBuffers();
-
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
 
 		m_Running = m_Window->IsWindowActive();
 	}
