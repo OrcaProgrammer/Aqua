@@ -11,11 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Aqua\File\AQUA2DFile.h" />
+    <ClInclude Include="src\Aqua\Core\Data.h" />
+    <ClInclude Include="src\Aqua\Core\Simulation.h" />
     <ClInclude Include="src\Aqua.h" />
     <ClInclude Include="src\Aqua\Core\Core.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Aqua\Core\Test.cpp" />
+    <ClCompile Include="src\Aqua\File\AQUA2DFile.cpp" />
+    <ClCompile Include="src\Aqua\Core\Simulation.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -83,9 +83,6 @@
     <ClInclude Include="src\Simulator\Core\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Simulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="res\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -164,6 +161,8 @@
     <None Include="res\Resource.aps" />
     <None Include="src\Simulator\Shaders\simpleShader.frag" />
     <None Include="src\Simulator\Shaders\simpleShader.vert" />
+    <None Include="imgui.ini" />
+    <None Include="res\grids\Test.aqua" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\glfw3.lib" />

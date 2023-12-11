@@ -11,7 +11,30 @@ void Application::run() {
 	std::string fragShaderPath = ".\\src\\Simulator\\Shaders\\" + shaderName + ".frag";
 	Shader* testShader = new Shader(vertShaderPath.c_str(), fragShaderPath.c_str());
 
+	Aqua::AQUA2DFile file;
+	file.read(".\\res\\2D files\\Cylinder_Sim.aqua2d");
+
+	float vertices[] = {
+		0.5f,  0.5f, 0.0f,  // top right
+		0.5f, -0.5f, 0.0f,  // bottom right
+	   -0.5f, -0.5f, 0.0f,  // bottom left
+	   -0.5f,  0.5f, 0.0f   // top left 
+	};
+
+	unsigned int indices[] = {  // note that we start from 0!
+		0, 1, 3,  // first Triangle
+		1, 2, 3   // second Triangle
+	};
+
 	Renderer renderer;
+	
+	for (int i = 0; i < (sizeof(vertices) / sizeof(float)); i++) {
+		renderer.AddVertex(vertices[i]);
+	}
+	for (int i = 0; i < (sizeof(indices) / sizeof(unsigned int)); i++) {
+		renderer.AddIndice(indices[i]);
+	}
+
 	renderer.Init();
 	renderer.SetShader(testShader);
 

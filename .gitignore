@@ -1,12 +1,12 @@
 # Directories
 .vs
-Simulator/includes
-Simulator/libs
+bin/
 bin-int/
 
 # Files
 **.user
 **.txt
+**.drawio
 Simulator/src/glad.c
 Simulator/src/Simulator/ImGui/imgui.cpp
 Simulator/src/Simulator/ImGui/imgui_demo.cpp

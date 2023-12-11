@@ -64,7 +64,7 @@
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Simulator\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -85,7 +85,7 @@
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -211,7 +211,6 @@
     <ClInclude Include="src\Simulator\Core\Layer.h" />
     <ClInclude Include="src\Simulator\Core\LayerStack.h" />
     <ClInclude Include="res\resource.h" />
-    <ClInclude Include="src\Simulator.h" />
     <ClInclude Include="src\Simulator\Core\Application.h" />
     <ClInclude Include="src\Simulator\Core\Window.h" />
     <ClInclude Include="src\Sim_pch.h" />
@@ -223,6 +222,8 @@
     <Image Include="..\..\..\..\Drawing Files\Logos\Aqua Logos\Aqua-Placeholder1.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="imgui.ini" />
+    <None Include="res\grids\Test.aqua" />
     <None Include="res\Resource.aps" />
     <None Include="src\Simulator\Shaders\simpleShader.frag" />
     <None Include="src\Simulator\Shaders\simpleShader.vert" />
