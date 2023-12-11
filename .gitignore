@@ -7,11 +7,3 @@ bin-int/
 **.user
 **.txt
 **.drawio
-Simulator/src/glad.c
-Simulator/src/Simulator/ImGui/imgui.cpp
-Simulator/src/Simulator/ImGui/imgui_demo.cpp
-Simulator/src/Simulator/ImGui/imgui_draw.cpp
-Simulator/src/Simulator/ImGui/imgui_tables.cpp
-Simulator/src/Simulator/ImGui/imgui_widgets.cpp
-Simulator/src/Simulator/ImGui/imgui_impl_glfw.cpp
-Simulator/src/Simulator/ImGui/imgui_impl_opengl3.cpp
